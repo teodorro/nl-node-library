@@ -1,0 +1,28 @@
+{
+  "name": "nl-node-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teodorro/nl-node-library.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teodorro/nl-node-library/issues"
+  },
+  "homepage": "https://github.com/teodorro/nl-node-library#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pm2": "^5.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
