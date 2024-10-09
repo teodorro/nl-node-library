@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/teodorro/nl-node-library#readme",
   "dependencies": {
+    "axios": "^1.7.7",
     "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
     "pm2": "^5.4.2"
   },
   "devDependencies": {
