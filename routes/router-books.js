@@ -1,9 +1,7 @@
 const express = require('express');
-const fs = require('fs');
 const fileMulter = require('../middleware/file');
-const Books = require('../storage/books');
+const books = require('../storage/books');
 const router = express.Router();
-let books = new Books();
 
 // получить все книги
 // получаем массив всех книг
@@ -78,27 +76,19 @@ router.delete('/:id', (req, res) => {
   }
 });
 
-router.get('/:id/download', fileMulter.single('fileBook'), (req, res) => {
+router.get('/:id/download', (req, res) => {
   const { id } = req.params;
   idNumber = Number.parseInt(id);
   const book = books?.getBook(idNumber);
-  fs.writeFile(`${book.title}.txt`, book.fileBook, (err) => {
-    if (err) console.log(err);
-  });
-});
 
-// router.get('/:id/download', fileMulter.single('fileBook'), (req, res) => {
-//   const { id } = req.params;
-//   idNumber = Number.parseInt(id);
-//   const book = books?.getBook(idNumber);
-//   if (book == null) {
-//     res.status(404);
-//   }
-//   if (req.file) {
-//     const { path } = req.file;
-//     res.json({ path });
-//   }
-//   res.json();
-// });
+  const filePath = book.fileBook;
+  res.download(filePath, `${book.fileName}.txt`, (err) => {
+    if (err) {
+      console.error('Error downloading the file:', err.message);
+      res.status(500).send('Error downloading the file');
+    }
+  });
+
+});
 
 module.exports = router;

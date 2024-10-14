@@ -1,4 +1,4 @@
-module.exports = class Books {
+class Books {
   constructor() {
     this._books = [];
     this._nextId = 1;
@@ -59,3 +59,7 @@ module.exports = class Books {
     return book;
   }
 };
+
+const books = new Books();
+
+module.exports = books;
