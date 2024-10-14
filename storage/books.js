@@ -5,8 +5,8 @@ module.exports = class Books {
   }
 
   add(info) {
-    const { title, description, authors, favorite, fileCover, fileName } = info;
-    const book = { title, description, authors, favorite, fileCover, fileName };
+    const { title, description, authors, favorite, fileCover, fileName, fileBook } = info;
+    const book = { title, description, authors, favorite, fileCover, fileName, fileBook };
     book.id = this._nextId++;
     this._books.push(book);
     return book;
@@ -34,7 +34,7 @@ module.exports = class Books {
     if (book == null) {
       return null;
     }
-    const { title, description, authors, favorite, fileCover, filename } = info;
+    const { title, description, authors, favorite, fileCover, filename, fileBook } = info;
     if (title != null) {
       book.title = title;
     }
@@ -52,6 +52,9 @@ module.exports = class Books {
     }
     if (filename != null) {
       book.filename = filename;
+    }
+    if (fileBook != null) {
+      book.fileBook = fileBook;
     }
     return book;
   }
